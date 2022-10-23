@@ -78,12 +78,24 @@ def get_graph(landing_site, plot_range):
     if landing_site == 'ALL':
         filtered_df  = spacex_df[spacex_df["Payload Mass (kg)"]>plot_range[0]]
         filtered_df  = filtered_df [filtered_df ["Payload Mass (kg)"]<plot_range[1]]
-        fig = px.scatter(filtered_df , x="Payload Mass (kg)", y="class", color="Booster Version Category")
+        fig = px.scatter(filtered_df
+            ,x="Payload Mass (kg)"
+            ,y="class"
+            ,color="Booster Version Category"
+            ,size='Payload Mass (kg)'
+            ,hover_data=['Payload Mass (kg)']
+            )
     else:
         filtered_df  = spacex_df[spacex_df['Launch Site'] == landing_site]
         filtered_df  = filtered_df [filtered_df ["Payload Mass (kg)"]>plot_range[0]]
         filtered_df  = filtered_df [filtered_df ["Payload Mass (kg)"]<plot_range[1]]
-        fig = px.scatter(filtered_df , x="Payload Mass (kg)", y="class", color="Booster Version Category")
+        fig = px.scatter(filtered_df 
+            ,x="Payload Mass (kg)"
+            ,y="class"
+            ,color="Booster Version Category"
+            ,size='Payload Mass (kg)'
+            ,hover_data=['Payload Mass (kg)']
+            )
     return fig
 # Run the app
 if __name__ == '__main__':
